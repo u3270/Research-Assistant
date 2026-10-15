@@ -1,0 +1,28 @@
+Read CLAUDE.md and follow all rules in it.
+
+Read data/candidates.json. The candidates are UNRANKED (no relevance score) —
+assess each paper's relevance yourself from its title, abstract, and metadata,
+following the paper-selection and prioritization rules in CLAUDE.md. Then select
+at most six and grade each A/B/C.
+
+For each selected paper:
+
+1. Use the Zotero MCP to search for duplicates by DOI first, then by title.
+2. If the paper is not already present, add it to Zotero.
+3. Do not download a paywalled PDF.
+4. Add Zotero tags according to the tagging rules in CLAUDE.md
+   (daily-research, relevance grade, and content-based topic tags).
+5. Only after a successful Zotero addition, append its normalized DOI to
+   data/seen_dois.txt. If no DOI exists, append "url:" followed by its stable URL.
+
+Create today's Korean research digest at the exact path specified in CLAUDE.md.
+
+Do not overwrite an existing file. If the file exists, append a clearly separated
+update section with the current time.
+
+At the end, report:
+- selected papers
+- papers newly added to Zotero
+- skipped Zotero duplicates
+- failed additions and reasons
+- generated Obsidian note path

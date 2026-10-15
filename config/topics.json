@@ -1,0 +1,171 @@
+{
+  "_comment": [
+    "연구 관심사의 단일 소스(single source of truth).",
+    "이 파일만 수정하면 논문 검색 키워드(search_papers.py)와",
+    "Zotero 주제 태그(CLAUDE.md를 통해 Claude가 사용)가 함께 바뀝니다. 다른 파일은 손댈 필요 없음.",
+    "",
+    "'topics'의 각 항목:",
+    "  tag               - Zotero 주제 태그 slug (kebab-case). Claude가 쓸 수 있는 태그이기도 함.",
+    "  queries           - 쿼리 목록; 각 쿼리는 '필수 포함 용어'들의 리스트.",
+    "                      API 검색어(IEEE/arXiv/Semantic Scholar/Crossref) 생성에 사용.",
+    "                      태그만 쓰고 적극 검색은 안 할 주제는 []로 비워둠.",
+    "  score_terms       - (선택) 관련성 판단용 힌트 키워드. 코드는 점수를 매기지 않음 —",
+    "                      관련성/등급은 Claude가 판단함. Claude 참고용 힌트일 뿐.",
+    "  title_boost_terms - (선택) 제목에 나타나면 특히 관련성이 높은 용어. Claude 참고용.",
+    "",
+    "순서 중요: 가장 중요한 주제를 먼저 나열하세요. rate-limit이 있는 소스는",
+    "생성된 쿼리 중 앞쪽 일부만 사용함 (Semantic Scholar: 처음 4개, Crossref: 처음 9개).",
+    "",
+    "관련성 판단과 A/B/C 등급은 Claude가 함(CLAUDE.md 참고). 이 파일은 '무엇을 검색하고",
+    "어떤 태그를 쓸지'를 정의하고 score_terms로 선택적 힌트만 줌.",
+    "",
+    "'archived_topics'는 코드가 무시함. 과거 관심사를 보존해 쉽게 되돌리기 위한 용도."
+  ],
+
+  "topics": [
+    {
+      "tag": "leo-pnt",
+      "queries": [
+        ["LEO-PNT"],
+        ["LEO satellite", "positioning"],
+        ["LEO satellite", "navigation"],
+        ["low Earth orbit", "navigation"]
+      ],
+      "score_terms": {
+        "leo-pnt": 18,
+        "leo pnt": 18,
+        "leo satellite navigation": 16,
+        "leo satellite positioning": 16,
+        "low earth orbit navigation": 14,
+        "low earth orbit positioning": 14,
+        "leo constellation": 10,
+        "mega-constellation": 8
+      },
+      "title_boost_terms": [
+        "leo-pnt",
+        "leo pnt",
+        "leo satellite navigation",
+        "leo satellite positioning"
+      ]
+    },
+    {
+      "tag": "signals-of-opportunity",
+      "queries": [
+        ["opportunistic navigation", "satellite"],
+        ["signals of opportunity", "positioning"]
+      ],
+      "score_terms": {
+        "opportunistic navigation": 16,
+        "signals of opportunity": 14,
+        "satellite signals of opportunity": 16
+      },
+      "title_boost_terms": [
+        "opportunistic navigation"
+      ]
+    },
+    {
+      "tag": "doppler",
+      "queries": [
+        ["Doppler positioning", "LEO"]
+      ],
+      "score_terms": {
+        "doppler positioning": 12,
+        "doppler-based positioning": 12
+      }
+    },
+    {
+      "tag": "leo-constellation",
+      "queries": [
+        ["Starlink", "positioning"]
+      ],
+      "score_terms": {
+        "starlink": 10,
+        "oneweb": 8
+      }
+    },
+    {
+      "tag": "rfsoc",
+      "queries": [
+        ["RFSoC", "wireless communication"],
+        ["RFSoC", "satellite receiver"]
+      ],
+      "score_terms": {
+        "rfsoc": 5,
+        "rf system-on-chip": 5
+      }
+    },
+    {
+      "tag": "fpga",
+      "queries": [
+        ["FPGA", "wireless positioning"],
+        ["FPGA", "GNSS receiver"]
+      ],
+      "score_terms": {
+        "fpga": 3
+      }
+    },
+    {
+      "tag": "gnss",
+      "queries": [],
+      "score_terms": {
+        "gnss receiver": 6,
+        "satellite receiver": 6
+      }
+    },
+    {
+      "tag": "receiver-design",
+      "queries": [],
+      "score_terms": {
+        "software-defined radio": 4
+      }
+    },
+    {
+      "tag": "orbit-determination",
+      "queries": [],
+      "score_terms": {}
+    }
+  ],
+
+  "archived_topics": [
+    {
+      "tag": "wifi-ranging",
+      "note": "이전 관심사 (Wi-Fi 거리측정 / 실내 측위). 'topics'로 다시 옮기면 재활성화됨.",
+      "queries": [
+        ["Wi-Fi ranging"],
+        ["Wi-Fi localization"],
+        ["wireless positioning", "OFDM"],
+        ["CSI-based localization"],
+        ["channel state information", "localization"],
+        ["time delay estimation", "OFDM"],
+        ["propagation delay estimation", "wireless"],
+        ["MUSIC", "ranging"],
+        ["MUSIC", "delay estimation"],
+        ["SAGE", "channel estimation", "wireless"]
+      ],
+      "score_terms": {
+        "wi-fi ranging": 18,
+        "wifi ranging": 18,
+        "802.11az": 16,
+        "802.11bk": 16,
+        "fine timing measurement": 12,
+        "ftm": 5,
+        "wi-fi localization": 14,
+        "wifi localization": 14,
+        "wireless positioning": 11,
+        "propagation delay": 10,
+        "time delay estimation": 10,
+        "time-of-flight": 9,
+        "time of flight": 9,
+        "channel state information": 7,
+        "csi-based": 7,
+        "csi localization": 8,
+        "wideband ofdm": 10,
+        "super-resolution": 8,
+        "music algorithm": 8,
+        "music-based": 8,
+        "sage algorithm": 7,
+        "ranging error": 8
+      }
+    }
+  ]
+}

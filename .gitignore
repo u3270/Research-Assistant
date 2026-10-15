@@ -1,0 +1,18 @@
+# Logs (개인 실행 기록 — 공유 제외)
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets — 절대 커밋하지 마세요
+.env
+*.key
+*.pem
+secrets*
+credentials*
+
+# Working data (regenerated at runtime)
+data/candidates.json
